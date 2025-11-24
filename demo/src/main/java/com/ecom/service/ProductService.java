@@ -26,6 +26,7 @@ public class ProductService {
         Category category=categoryRepository.findById(categoryId).orElseThrow(()->{
             throw new CategoryNotFoundException("category not found with this id : "+categoryId);
         });
+        product.setCategory(category);
         category.getProducts().add(product);
         return productrepo.save(product);
     }
@@ -33,10 +34,14 @@ public class ProductService {
         Product product=productrepo.findById(id).orElseThrow(()->{
             throw new ProductNotFound("product not found with this id : "+id);
         });
+        Category category=categoryRepository.findById(productupdate.getCategoryId()).orElseThrow(()->{
+            throw new CategoryNotFoundException("category not found with this id : "+productupdate.getCategoryId());
+        });
+        product.setCategory(category);
         product.setProductname(productupdate.getProductname());
         product.setPrice(productupdate.getProductprice());
-        product.setCategory(productupdate.getProductcategory());
-        return product;
+        product.setCategory(category);
+        return productrepo.save(product);
     }
     public void deleteProduct(Long id) throws ProductNotFound{
         Product product=productrepo.findById(id).orElseThrow(()->{

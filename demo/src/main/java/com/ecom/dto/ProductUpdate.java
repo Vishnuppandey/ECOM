@@ -6,7 +6,7 @@ public class ProductUpdate {
 
     private String productname;
     private double productprice;
-    private Category productcategory;
+    private Long categoryId;
 
     public String getProductname() {
         return productname;
@@ -24,11 +24,11 @@ public class ProductUpdate {
         this.productprice = productprice;
     }
 
-    public Category getProductcategory() {
-        return productcategory;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setProductcategory(Category productcategory) {
-        this.productcategory = productcategory;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 }

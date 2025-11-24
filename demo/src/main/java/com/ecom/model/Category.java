@@ -41,6 +41,8 @@ public class Category {
         this.products = products;
     }
 
+
+    @Column(unique = true)
     private String categoryname;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
     private List<Product> products=new ArrayList<>();
